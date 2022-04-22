@@ -1,5 +1,7 @@
 var wordI = ""
-var wordBank = ["Tencza", "Ness", "Pacowta"]
+var wordBank = ["Tencza", "Ness", "fight", "coder", "flows", 
+                "class", "seven", "apple", "among", "craft",
+                "crime", "depth", "cycle", "fault", "input"]
 wordI = wordBank[Math.floor(Math.random() * wordBank.length)].toUpperCase()
 var label = document.getElementById("label");
 label.innerHTML = "Enter a " + wordI.length + " letter word"
