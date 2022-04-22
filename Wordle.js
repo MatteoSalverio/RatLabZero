@@ -31,6 +31,8 @@ function Game(word) {
     if (tries > 0) {
         var answer = ""
         tries -= 1
+        var triesDisplay = document.getElementById("tries")
+        triesDisplay.innerHTML = tries + " tries left"
         answer = getInputValue().toUpperCase()
         if (answer == word) {
             writeln(answer)
@@ -61,6 +63,9 @@ function Game(word) {
     }//if (tries > 0)
     if (won)
         alert("You won!")
-    else if (tries == 0)
+    else if (tries == 0) {
+        var finish = document.getElementById("finish");
+        finish.innerHTML = "The word was " + word
         alert("Better luck next time!")
+    }
 }//Game
