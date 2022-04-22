@@ -14,8 +14,11 @@ p{
 }
 li{
     font-size: 32px;
+    text-align: left;
 }
 body{
     background-color: rgb(3, 0, 44);
     color: rgb(214, 214, 214);
+    font-size: 32px;
+    text-align: center;
 }
