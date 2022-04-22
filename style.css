@@ -1,12 +1,15 @@
 h1{
     font-size: 64px;
     text-align: center;
+    color: greenyellow;
 }
 h2{
     font-size: 42px;
+    color: greenyellow;
 }
 a{
     font-size: 32px;
+    color: greenyellow;
 }
 p{
     font-size: 32px;
