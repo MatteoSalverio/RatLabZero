@@ -59,8 +59,10 @@ function Game(word) {
                             }
                         }
                     }
-                    if (!found)
+                    if (!found) {
                         output += "#"
+                        found = true
+                    }
                 }
             }
             writeln(output)
