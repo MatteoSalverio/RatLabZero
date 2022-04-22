@@ -25,6 +25,11 @@ function getInputValue() {
     writeInp(inputVal.toUpperCase())
     return inputVal
 }
+document.addEventListener("keyup", function(event) {
+    if (event.code === 'Enter') {
+        Game()
+    }
+});
 function Game(word) {
     word = wordI
     var won = false
