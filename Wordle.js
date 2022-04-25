@@ -1,78 +1,81 @@
 var wordI = ""
-var wordBank = ["Tencza", "Ness", "fight", "coder", "flows", 
-                "class", "seven", "apple", "among", "craft",
-                "crime", "depth", "cycle", "fault", "input"]
+var table;
+var wordBank = ["fight", "coder", "flows",
+    "class", "seven", "apple", "among", "craft",
+    "crime", "depth", "cycle", "fault", "input"]
 wordI = wordBank[Math.floor(Math.random() * wordBank.length)].toUpperCase()
+//document.write(wordI)
 var label = document.getElementById("label");
 label.innerHTML = "Enter a " + wordI.length + " letter word"
-var tries = 5
-function writeln(text) {
-    var out = document.getElementById("out");
-    var outT = out.textContent + text + "."
-    outT = outT.replace(".", " | ")
-    out.innerHTML = outT
-    console.log(outT)
-}
+textBox = document.getElementById("myInput")
+var tries = 6
 function writeInp(text) {
-    var out = document.getElementById("inp");
-    var outT = out.textContent + text + "."
-    outT = outT.replace(".", " | ")
-    out.innerHTML = outT
+    for (var i = 0; i < 6; i++) {
+        if (document.getElementById("[" + i + ",0]").innerHTML != " ")
+            continue;
+        for (var j = 0; j < text.length; j++) {
+            var loc = document.getElementById("[" + i + "," + j + "]");
+            loc.innerHTML = text[j];
+            if (text[j] == wordI[j]) {
+                loc.style = "background-color: greenyellow;"
+            }
+            else if (wordI.indexOf(text[j]) > -1) {
+                loc.style = "background-color: orange;"
+            }
+            else {
+                loc.style = "background-color: red;"
+            }
+        }
+        break;
+    }
 }
 var inputVal = ""
 function getInputValue() {
     inputVal = document.getElementById("myInput").value;
     writeInp(inputVal.toUpperCase())
+    textBox.value = ""
     return inputVal
 }
-document.addEventListener("keyup", function(event) {
+document.addEventListener("keyup", function (event) {
     if (event.code === 'Enter') {
         Game()
     }
 });
+function createTable() {
+    var toWrite = ""
+    toWrite += ("<table border='1px' id='table'>")
+    for (var i = 0; i < 6; i++) {
+        toWrite += ("<tr>")
+        for (var j = 0; j < 5; j++) {
+            toWrite += ("<th id='[" + i + "," + j + "]'> </th>")
+        }
+        toWrite += ("</tr>")
+    }
+    toWrite += ("</table>")
+    table = document.getElementById("tableDiv")
+    table.innerHTML = toWrite;
+}
 function Game(word) {
     word = wordI
     var won = false
     if (tries > 0) {
         var answer = ""
         tries -= 1
-        var triesDisplay = document.getElementById("tries")
-        triesDisplay.innerHTML = tries + " tries left"
         answer = getInputValue().toUpperCase()
         if (answer == word) {
-            writeln(answer)
             won = true
             tries = 0
         }
-        else {
-            var output = ""
-            for (var i = 0; i < answer.length; i++) {
-                if (answer[i] == word[i])
-                    output += answer[i]
-                else {
-                    var found = false
-                    for (var j = 0; j < answer.length; j++) {
-                        if (answer[i] == word[j]) {
-                            if (!found) {
-                                output += "*"
-                                found = true
-                            }
-                        }
-                    }
-                    if (!found) {
-                        output += "#"
-                        found = true
-                    }
-                }
-            }
-            writeln(output)
-        }
     }//if (tries > 0)
-    if (won)
-        alert("You won!")
+    if (won) {
+        //alert("You won!")
+        console.log("You won!")
+    }
     else if (tries == 0) {
         var finish = document.getElementById("finish");
         finish.innerHTML = "The word was " + word
         alert("Better luck next time!")
     }
 }//Game
+
+createTable()
