@@ -1,46 +1,20 @@
-var wordI = ""
+var word = ""
 var table;
+var keys;
 var wordBank = ["fight", "coder", "flows",
     "class", "seven", "apple", "among", "craft",
-    "crime", "depth", "cycle", "fault", "input"]
-wordI = wordBank[Math.floor(Math.random() * wordBank.length)].toUpperCase()
-//document.write(wordI)
-var label = document.getElementById("label");
-label.innerHTML = "Enter a " + wordI.length + " letter word"
-textBox = document.getElementById("myInput")
+    "crime", "depth", "cycle", "fault", "input",
+    "pivot", "train", "acute", "zesty", "basic",
+    "white", "board", "bored", "broad", "rythm",
+    "bowed"]
+word = wordBank[Math.floor(Math.random() * wordBank.length)].toUpperCase()
+//document.write(word)
 var tries = 6
-function writeInp(text) {
-    for (var i = 0; i < 6; i++) {
-        if (document.getElementById("[" + i + ",0]").innerHTML != " ")
-            continue;
-        for (var j = 0; j < text.length; j++) {
-            var loc = document.getElementById("[" + i + "," + j + "]");
-            loc.innerHTML = text[j];
-            if (text[j] == wordI[j]) {
-                loc.style = "background-color: greenyellow;"
-            }
-            else if (wordI.indexOf(text[j]) > -1) {
-                loc.style = "background-color: orange;"
-            }
-            else {
-                loc.style = "background-color: red;"
-            }
-        }
-        break;
-    }
-}
-var inputVal = ""
-function getInputValue() {
-    inputVal = document.getElementById("myInput").value;
-    writeInp(inputVal.toUpperCase())
-    textBox.value = ""
-    return inputVal
-}
-document.addEventListener("keyup", function (event) {
-    if (event.code === 'Enter') {
-        Game()
-    }
-});
+document.addEventListener('keypress', (event) => {
+    var name = event.key.toUpperCase();
+    //alert(name)
+    ProcessButtons(name)
+}, false);
 function createTable() {
     var toWrite = ""
     toWrite += ("<table border='1px' id='table'>")
@@ -55,27 +29,94 @@ function createTable() {
     table = document.getElementById("tableDiv")
     table.innerHTML = toWrite;
 }
-function Game(word) {
-    word = wordI
-    var won = false
-    if (tries > 0) {
-        var answer = ""
-        tries -= 1
-        answer = getInputValue().toUpperCase()
-        if (answer == word) {
-            won = true
-            tries = 0
+var btns;
+function createKeys() {
+    var alphabet = "QWERTYUIOPASDFGHJKL3ZXCVBNM4"
+    var aCount = 0
+    var toWrite = ""
+    var w = 10;
+    for (var i = 0; i < 3; i++) {
+        for (var j = 0; j < w; j++) {
+            var key = alphabet[aCount]
+            if (key == "3")
+                key = "ENTER"
+            else if (key == "4")
+                key = "BKSP"
+            toWrite += "<button id='" + key + "' class='kb' style='height: 60px; width: 45px'>" + key + "</button>"
+            aCount++
         }
-    }//if (tries > 0)
-    if (won) {
-        //alert("You won!")
-        console.log("You won!")
+        toWrite += "<br>"
+        w--
+        if (w == 8)
+            w++
     }
-    else if (tries == 0) {
-        var finish = document.getElementById("finish");
-        finish.innerHTML = "The word was " + word
-        alert("Better luck next time!")
+    keys = document.getElementById("keysDiv")
+    keys.innerHTML = toWrite;
+    document.getElementById("ENTER").style = "height: 60px; width: 68px"
+    document.getElementById("BKSP").style = "height: 60px; width: 68px"
+    btns = document.getElementsByClassName("kb")
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var clicked = this.innerHTML
+            ProcessButtons(clicked)
+        });
     }
-}//Game
+}
+var guess = ""
+var r = 0, c = 0
+function ProcessButtons(k) {
+    if (guess.length < 5 && k != "ENTER" && k != "BKSP") {
+        guess += k
+        var placeKey = document.getElementById("[" + r + "," + c + "]")
+        placeKey.innerHTML = k
+        c++
+    }
+    else if (k == "BKSP" && c > 0) {
+        c--
+        guess = guess.substring(0, guess.length - 1)
+        var placeKey = document.getElementById("[" + r + "," + c + "]")
+        placeKey.innerHTML = ""
+    }
+    else if (k == "ENTER") {
+        ProcessGuess(guess)
+        r++
+        c = 0
+        guess = ""
+    }
+}
+function ProcessGuess(g) {
+    SetColors()
+    if (g == word)
+        alert("You won!")
+
+}
+function SetColors() {
+    var check
+    var count = 0
+    var guessWord = ""
+    for (var i = 0; i < word.length; i++) {
+        check = document.getElementById("[" + r + "," + i + "]")
+        guessWord += check.innerHTML
+    }
+    for (var i = 0; i < word.length; i++) {
+        check = document.getElementById("[" + r + "," + i + "]")
+        keyCheck = document.getElementById(check.innerHTML)
+        if (check.innerHTML == word[i]) {
+            check.style = "background-color: green"
+            keyCheck.style = "background-color: green; height: 60px; width: 45px;"
+            count++
+        }
+        else if (word.indexOf(check.innerHTML) > -1) {
+            check.style = "background-color: darkgoldenrod"
+            keyCheck.style = "background-color: darkgoldenrod; height: 60px; width: 45px;"
+            count++
+        }
+        else {
+            check.style = "background-color: gray"
+            keyCheck.style = "background-color: gray; height: 60px; width: 45px;"
+        }
+    }
+}
 
 createTable()
+createKeys()
