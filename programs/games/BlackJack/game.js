@@ -190,7 +190,7 @@ function endRound() {
     showHiddenCard();
     gameOver = true;
     document.getElementById("buttonLocation").parentNode.removeChild(document.getElementById("buttonLocation"));
-    document.getElementById("buttonDiv").innerHTML += "<button type='button' id='refresh' onclick='refresh()' style='width: 180px; height: 50px; font-size: 20px; background-color: Red;'>New Game</button>";
+    document.getElementById("buttonDiv").innerHTML += "<button type='button' id='refresh' onclick='refresh()' style='width: 180px; height: 50px; font-size: 20px; background-color: Red; color: black;'>New Game</button>";
 }
 function sleep(milliseconds) {
     var start = new Date().getTime();
