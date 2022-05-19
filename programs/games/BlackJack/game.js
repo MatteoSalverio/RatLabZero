@@ -32,7 +32,7 @@ class Card {
         if (card == "Ace")
             document.getElementById("cards").innerHTML += "<img class='ace' title='" + card + "' src='cards/ace" + ace + ".png' width='" + size + "px' onclick='swapAce()'> </img>";
         else
-            document.getElementById("cards").innerHTML += "<img title='" + card + "' src='cards/" + card.toLowerCase() + ".png' width='" + size + "px'> </img>";
+            document.getElementById("cards").innerHTML += "<img title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>";
     }
     addCount(card) {
         if (card == "Queen" || card == "King" || card == "Jack")
@@ -56,7 +56,7 @@ class DealerCard extends Card {
         if (dealerCards.length <= 1)
             document.getElementById("dealerCards").innerHTML += "<img id='hidden' title='Hidden' src='cards/" + "back" + ".png' width='" + size + "px'> </img>"
         else
-            document.getElementById("dealerCards").innerHTML += "<img title='" + card + "' src='cards/" + card.toLowerCase() + ".png' width='" + size + "px'> </img>"
+            document.getElementById("dealerCards").innerHTML += "<img title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>"
     }
     addCount(card, play) {
         if (card == "Queen" || card == "King" || card == "Jack")
@@ -180,7 +180,7 @@ function swapDealerAce() {
     }
 }
 function showHiddenCard() {
-    document.getElementById("hidden").setAttribute("src", "cards/" + dealerCardObjs[0].cardNum.toLowerCase() + ".png");
+    document.getElementById("hidden").setAttribute("src", "cards/" + dealerCardObjs[0].cardNum + ".png");
 }
 function endRound() {
     showHiddenCard();
