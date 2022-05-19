@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<title>Black Jack</title>
+<style>
+    button {
+        font-weight: bolder;
+    }
+</style>
+<html lang="en">
+    <body style="font-size: 30px; font-family: sans-serif; font-weight: bolder; background-color: rgb(9, 115, 35); text-align: center;">
+        <p id="dealerCount">Dealer:</p>
+        <div id="dealerCards"></div>
+        <br>
+        <br id="buttonLocation">
+        <div id="buttonDiv"></div>
+        <br>
+        <p id="output"></p>
+        <div id="cards"></div>
+        <button type="button" id="hit" onclick="hit()" style="width: 100px; height: 50px; font-size: 20px; background-color: lime;">Hit</button>
+        <button type="button" id="stand" onclick="stand()" style="width: 100px; height: 50px; font-size: 20px; background-color: deepskyblue;">Stand</button>
+    </body>
+    <script src="game.js"></script>
+</html>
