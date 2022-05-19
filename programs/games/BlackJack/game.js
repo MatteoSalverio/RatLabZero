@@ -104,12 +104,12 @@ function bust() {
     endRound();
     //dealerTurn();
 }
-//function swapAce() {
+function swapAce() {
     if (ace == 1)
         ace = 11;
     else
         ace = 1;
-    console.log("Player Ace is now worth " + ace);
+    //console.log("Player Ace is now worth " + ace);
     count = 0;
     var temp = 0;
     for (var i = 0; i < cards.length; i++) {
@@ -159,12 +159,12 @@ function dealerBust() {
     document.getElementById("dealerCount").innerHTML = "The dealer bust with a total of " + dealerCount;
     endRound();
 }
-//function swapDealerAce() {
+function swapDealerAce() {
     if (dealerAce == 1)
         dealerAce = 11;
     else
         dealerAce = 1;
-    console.log("Dealer Ace is now worth " + dealerAce);
+    //console.log("Dealer Ace is now worth " + dealerAce);
     dealerCount = 0;
     var temp = 0;
     for (var i = 0; i < dealerCards.length; i++) {
