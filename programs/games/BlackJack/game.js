@@ -14,8 +14,12 @@ var deck = [
     "Jack", "Jack", "Jack", "Jack"
 ];
 
-var size = window.innerHeight / 5;
-
+var size = Math.floor(window.innerHeight / 5);
+var buttonSize = Math.floor(window.innerHeight / 5);
+document.getElementById("hit").style.width = buttonSize + "px";
+document.getElementById("hit").style.height = buttonSize / 2 + "px";
+document.getElementById("stand").style.width = buttonSize + "px";
+document.getElementById("stand").style.height = buttonSize / 2 + "px";
 class Card {
     constructor(cardNum) {
         var num = deck[Math.floor(Math.random() * deck.length)];
@@ -109,7 +113,7 @@ function swapAce() {
         ace = 11;
     else
         ace = 1;
-    //console.log("Player Ace is now worth " + ace);
+    console.log("Player Ace is now worth " + ace);
     count = 0;
     var temp = 0;
     for (var i = 0; i < cards.length; i++) {
@@ -164,7 +168,7 @@ function swapDealerAce() {
         dealerAce = 11;
     else
         dealerAce = 1;
-    //console.log("Dealer Ace is now worth " + dealerAce);
+    console.log("Dealer Ace is now worth " + dealerAce);
     dealerCount = 0;
     var temp = 0;
     for (var i = 0; i < dealerCards.length; i++) {
