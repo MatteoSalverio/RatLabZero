@@ -14,7 +14,7 @@ var deck = [
     "Jack", "Jack", "Jack", "Jack"
 ];
 
-var size = window.innerWidth / 13;
+var size = window.innerHeight / 5;
 
 class Card {
     constructor(cardNum) {
@@ -104,7 +104,7 @@ function bust() {
     endRound();
     //dealerTurn();
 }
-function swapAce() {
+//function swapAce() {
     if (ace == 1)
         ace = 11;
     else
@@ -159,7 +159,7 @@ function dealerBust() {
     document.getElementById("dealerCount").innerHTML = "The dealer bust with a total of " + dealerCount;
     endRound();
 }
-function swapDealerAce() {
+//function swapDealerAce() {
     if (dealerAce == 1)
         dealerAce = 11;
     else
