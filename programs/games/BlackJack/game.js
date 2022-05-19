@@ -14,7 +14,7 @@ var deck = [
     "Jack", "Jack", "Jack", "Jack"
 ];
 
-var size = window.innerWidth / 10;
+var size = window.innerWidth / 13;
 
 class Card {
     constructor(cardNum) {
