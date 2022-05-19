@@ -30,7 +30,7 @@ class Card {
     }
     displayCard(card) {
         if (card == "Ace")
-            document.getElementById("cards").innerHTML += "<img class='ace' title='" + card + "' src='cards/ace" + ace + ".png' width='" + size + "px' onclick='swapAce()'> </img>";
+            document.getElementById("cards").innerHTML += "<img class='ace' title='" + card + "' src='cards/Ace" + ace + ".png' width='" + size + "px' onclick='swapAce()'> </img>";
         else
             document.getElementById("cards").innerHTML += "<img title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>";
     }
