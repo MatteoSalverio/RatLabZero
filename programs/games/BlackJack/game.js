@@ -20,6 +20,7 @@ document.getElementById("hit").style.width = buttonSize + "px";
 document.getElementById("hit").style.height = buttonSize / 2 + "px";
 document.getElementById("stand").style.width = buttonSize + "px";
 document.getElementById("stand").style.height = buttonSize / 2 + "px";
+document.getElementById("body").style.backgroundSize = window.innerWidth + "px";
 class Card {
     constructor(cardNum) {
         var num = deck[Math.floor(Math.random() * deck.length)];
@@ -34,9 +35,9 @@ class Card {
     }
     displayCard(card) {
         if (card == "Ace")
-            document.getElementById("cards").innerHTML += "<img class='ace' title='" + card + "' src='cards/Ace" + ace + ".png' width='" + size + "px' onclick='swapAce()'> </img>";
+            document.getElementById("cards").innerHTML += "<img class='card' class='ace' title='" + card + "' src='cards/Ace" + ace + ".png' width='" + size + "px' onclick='swapAce()'> </img>";
         else
-            document.getElementById("cards").innerHTML += "<img title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>";
+            document.getElementById("cards").innerHTML += "<img class='card' title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>";
     }
     addCount(card) {
         if (card == "Queen" || card == "King" || card == "Jack")
@@ -58,9 +59,9 @@ class DealerCard extends Card {
     }
     displayCard(card) {
         if (dealerCards.length <= 1)
-            document.getElementById("dealerCards").innerHTML += "<img id='hidden' title='Hidden' src='cards/" + "back" + ".png' width='" + size + "px'> </img>"
+            document.getElementById("dealerCards").innerHTML += "<img class='card' id='hidden' title='Hidden' src='cards/" + "back" + ".png' width='" + size + "px'> </img>"
         else
-            document.getElementById("dealerCards").innerHTML += "<img title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>"
+            document.getElementById("dealerCards").innerHTML += "<img class='card' title='" + card + "' src='cards/" + card + ".png' width='" + size + "px'> </img>"
     }
     addCount(card, play) {
         if (card == "Queen" || card == "King" || card == "Jack")
@@ -190,7 +191,7 @@ function endRound() {
     showHiddenCard();
     gameOver = true;
     document.getElementById("buttonLocation").parentNode.removeChild(document.getElementById("buttonLocation"));
-    document.getElementById("buttonDiv").innerHTML += "<button type='button' id='refresh' onclick='refresh()' style='width: " + buttonSize + "px; height: " + buttonSize / 2 + "px; font-size: 20px; background-color: Red; color: black;'>New Game</button>";
+    document.getElementById("buttonDiv").innerHTML += "<button type='button' id='refresh' onclick='refresh()' style='width: " + buttonSize * 1.5 + "px; height: " + buttonSize / 2 + "px; font-size: 34px; background-color: Red; color: black;'>New Game</button>";
 }
 function sleep(milliseconds) {
     var start = new Date().getTime();
@@ -203,3 +204,12 @@ function sleep(milliseconds) {
 function refresh() {
     window.location.reload();
 }
+window.addEventListener('resize', function () {
+    //size = Math.floor(window.innerHeight / 5);
+    var buttonSize = Math.floor(window.innerHeight / 5);
+    document.getElementById("hit").style.width = buttonSize + "px";
+    document.getElementById("hit").style.height = buttonSize / 2 + "px";
+    document.getElementById("stand").style.width = buttonSize + "px";
+    document.getElementById("stand").style.height = buttonSize / 2 + "px";
+    document.getElementById("body").style.backgroundSize = window.innerWidth + "px";
+});
