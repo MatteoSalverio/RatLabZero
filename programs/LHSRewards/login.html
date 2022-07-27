@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<style>
+</style>
+
+<html>
+
+<head>
+    <title>Student Software</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <nav>
+            <img style="width: 300px;" src="images/logo.png">
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="index.html">Earn</a></li>
+                <li><a href="index.html">Prizes</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+
+        <div class="color-bar"><br></div>
+        <br>
+        <h1>Login to LHS Rewards</h1>
+        <div id="error" style="color: red;"><br></div>
+        <br>
+        <h2>Username</h2>
+        <input class="input-box" id="username" type="text">
+        <br>
+        <br>
+        <br>
+        <h2>Password</h2>
+        <input class="input-box" id="password" type="password">
+        <br>
+        <br>
+        <button id="enter" class="action-button" onclick="submit()">Enter</button>
+        <br><br><br>
+        <a id="back" class="button-link" href="index.html" style="font-size: 32px;">Back</a>
+
+    </div>
+    <script>
+        var username = "";
+        var password = "";
+        var passwordElement = document.getElementById("password")
+        passwordElement.addEventListener("keydown", function(e) {
+            k = e.key;
+            if (k == "Enter")
+                submit();
+        })
+        var testLogin = ["admin", "admin"]; //Temporary username and password
+        var errorElement = document.getElementById("error");
+        function submit() {
+            username = document.getElementById("username").value;
+            password = document.getElementById("password").value;
+            if (password != testLogin[1] || username != testLogin[0]) {
+                errorElement.innerHTML = "The username or password in incorrect.";
+            }
+            else {
+                errorElement.style.color = "lime";
+                errorElement.innerHTML = "Login successful!";
+            }
+        }
+    </script>
+</body>
+
+</html>
