@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.header {
+    width: 100%;
+    height: 100vh;
+    padding: 0 10%;
+    background: #ffffff;
+    font-size: 30px;
+}
+nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: relative;
+    z-index: 100;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 30px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #000000;
+}
+.text-box{
+    margin-top: 130px;
+    max-width: 600px;
+}
+.text-box h1{
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #000000;
+}
+.text-box a{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background: #efda1f;
+    padding: 10px 30px;
+    font-size: 25px;
+    margin-top: 25px;
+    border-radius: 6px;
+}
+.user-box{
+    background: #f6c348;
+    position: absolute;
+    top: 0;
+    right: 12%;
+    z-index: 1;
+}
+.user-box img{
+    display: block;
+    padding-top: 300px;
+    width: 410px;
+    margin-bottom: -205px;
+}
+
+.color-bar{
+    background-color: #efda1f;
+}
+.page-body{
+    font-size: 32px;
+}
+.page-body h2{
+    font-size: 52px;
+}
+
+.input-box{
+    font-size: 42px;
+    background-color: rgb(201, 201, 201);
+    margin-top: 10px;
+}
+.action-button{
+    font-size: 42px;
+    padding: 15px;
+    background-color: #efda1f;
+}
+.button-link{
+    display: inline-block;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background: #c6c6c6;
+    padding: 10px 30px;
+    font-size: 25px;
+    margin-top: 25px;
+    border-radius: 6px;
+}
